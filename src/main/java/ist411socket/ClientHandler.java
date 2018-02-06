@@ -260,14 +260,14 @@ out.write(testNode.toString());
                         out.write("HTTP/1.1 200 OK\n");
                         
                         if (path.endsWith(".png")){
-                        out.write("Content-Type: image/png\n");
+                        out.write("content-type:image/png\n");
                             System.out.println("ends with png");
                         }else if (path.endsWith(".jpg")){
-                        out.write("Content-Type: image/jpg\n");
+                        out.write("content-type:image/jpg\n");
                             System.out.println("ends with jpg");}
                             
                         
-                        out.write("Content-Type: test/html\n");
+//                        out.write("content-type: test/html\n");
 //                        System.out.println("Content-Type: image/png\n\n");
                         out.write("test");
 

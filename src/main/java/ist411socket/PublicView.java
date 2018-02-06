@@ -5,6 +5,7 @@
  */
 package ist411socket;
 
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.File;
@@ -12,6 +13,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.HashMap;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -60,15 +62,13 @@ public class PublicView {
     }
     
         public static byte[] getBytes(File f) throws IOException {
-//        html.append("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\"\n" +
-//"   \"http://www.w3.org/TR/html4/strict.dtd\">");
-//        html.append("<html><body>");
-
-//        html.append("<img src=\"" + image.getImage() + "\" alt=\"Flowers in Chania\">");
-//               html.append("<img src=\"" + "fw.jpg" + "\" alt=\"Flowers in Chania\">");
+            
+//               BufferedImage o = ImageIO.read(f);
+//        ByteArrayOutputStream b = new ByteArrayOutputStream();
+//        ImageIO.write(o, "png", b);
+//        byte[] img = b.toByteArray();
+//            return img;
         
-//               
-//               File f = new File("jw.jpg");
                byte[] buffer = new byte[1024];
                ByteArrayOutputStream os = new ByteArrayOutputStream();
                FileInputStream fis = new FileInputStream(f);
@@ -80,12 +80,5 @@ public class PublicView {
                os.close();
              return  os.toByteArray();
                
-//        html.append(image.getImage());
-//        html.append(html)
-        
-//        System.out.println("FilePath from View test: <img src=\"" + "\" alt=\"Flowers in Chania\">");
-//
-//        html.append("</body></html>");
-//        return html.toString();
-    }
-}
+    
+}}
