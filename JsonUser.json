@@ -1,0 +1,40 @@
+{
+  "validate" : true,
+  "addressArrayList" : [ {
+    "validate" : true,
+    "name" : "AndyLan2",
+    "street" : "1400Martin",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "AndyLan3",
+    "street" : "1400Martin",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "AndyLan5",
+    "street" : "1400Martin",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "AndyLan99",
+    "street" : "1400Martin",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "AndyLan99",
+    "street" : "1400Martin",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "Andy Lan99",
+    "street" : "1400 Martin",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  } ]
+}
