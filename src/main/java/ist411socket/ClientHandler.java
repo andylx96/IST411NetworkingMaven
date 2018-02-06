@@ -257,34 +257,38 @@ out.write(testNode.toString());
 //                    out.write("HTTP/1.1 404 Not Found\n\n");
 
                     if (checkFile(path) == true) {
-                        out.write("HTTP/1.1 200 OK\n");
-                        
-                        if (path.endsWith(".png")){
-                        out.write("content-type:image/png\n");
-                            System.out.println("ends with png");
-                        }else if (path.endsWith(".jpg")){
-                        out.write("content-type:image/jpg\n");
-                            System.out.println("ends with jpg");}
-                            
+//                        out.write("HTTP/1.1 200 OK\n".getBytes());
+//                        
+//                        if (path.endsWith(".png")){
+//                        out.write("content-type:image/png\n");
+//                            System.out.println("ends with png");
+//                        }else if (path.endsWith(".jpg")){
+//                        out.write("content-type:image/jpg\n");
+//                            System.out.println("ends with jpg");}
+//                            
                         
 //                        out.write("content-type: test/html\n");
 //                        System.out.println("Content-Type: image/png\n\n");
-                        out.write("test");
+//                        out.write("test");
+
+socket.getOutputStream().write("HTTP/1.1 200 OK\n".getBytes());
+//socket.getOutputStream().write("content-type:image/png\n".getBytes());
+//socket.getOutputStream().write("HTTP/1.1 200 OK\n".getBytes());
 
                         File file = new File(path.replaceFirst("/", ""));
                         System.out.println("File Chekc inside else: " + path.replaceFirst("/", ""));
 
-//                        socket.getOutputStream().write("HTTP/1.1 200 OK\n".getBytes());
-//                        socket.getOutputStream().write("Content-Type: image/png\n".getBytes());
+                        socket.getOutputStream().write("HTTP/1.1 200 OK".getBytes());
+                        socket.getOutputStream().write("Content-Type: image/png\n\n".getBytes());
 
 //                        socket.getOutputStream().write("Content-Type: test/html\n".getBytes());
                         byte[] bytesFromFile = PublicView.getBytes(file);
                         socket.getOutputStream().write(bytesFromFile);
                         System.out.println(bytesFromFile.length);
 
-                        socket.getOutputStream().write("\n".getBytes());
+//                        socket.getOutputStream().write("\n".getBytes());
 
-                        out.write("\n");
+//                        out.write("\n");
                         System.out.println("TestTrue");
                         socket.getOutputStream().flush();
                         socket.getOutputStream().close();

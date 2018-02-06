@@ -63,22 +63,22 @@ public class PublicView {
     
         public static byte[] getBytes(File f) throws IOException {
             
-//               BufferedImage o = ImageIO.read(f);
-//        ByteArrayOutputStream b = new ByteArrayOutputStream();
-//        ImageIO.write(o, "png", b);
-//        byte[] img = b.toByteArray();
-//            return img;
+               BufferedImage o = ImageIO.read(f);
+        ByteArrayOutputStream b = new ByteArrayOutputStream();
+        ImageIO.write(o, "png", b);
+        byte[] img = b.toByteArray();
+            return img;
         
-               byte[] buffer = new byte[1024];
-               ByteArrayOutputStream os = new ByteArrayOutputStream();
-               FileInputStream fis = new FileInputStream(f);
-               int read;
-               while ((read = fis.read(buffer))!= -1){
-               os.write(buffer, 0 ,read);
-               }
-               fis.close();
-               os.close();
-             return  os.toByteArray();
+//               byte[] buffer = new byte[1024];
+//               ByteArrayOutputStream os = new ByteArrayOutputStream();
+//               FileInputStream fis = new FileInputStream(f);
+//               int read;
+//               while ((read = fis.read(buffer))!= -1){
+//               os.write(buffer, 0 ,read);
+//               }
+//               fis.close();
+//               os.close();
+//             return  os.toByteArray();
                
     
 }}
