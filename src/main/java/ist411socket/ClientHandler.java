@@ -6,6 +6,7 @@
 package ist411socket;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import java.awt.Image;
@@ -130,7 +131,7 @@ public class ClientHandler {
                     out.write("HTTP/1.1 200 OK\n\n");
 
 //                    addressListModel.saveJSONToFile("JsonUser");
-                    out.write(addressListDataView.getHtml(AddressListModel.serializeAsJSON(this.addressListModel)));
+                    out.write(addressListDataView.getHtml(AddressListModel.serializeAsJSON2(this.addressListModel).toString()));
                     out.write("\n");
 
                 } //
@@ -162,6 +163,19 @@ public class ClientHandler {
                     out.write("HTTP/1.1 200 OK\n\n");
                     out.write(addressListJSONView.getHtml("JsonUser"));
 
+                    out.write("\n");
+
+//                sendResponse(socket, 405, "Method Not Allowed");
+                } // 
+                
+                else if (path.equals("/test4")) {
+
+                    System.out.println("Path received");
+                    out.write("HTTP/1.1 200 OK\n\n");
+//                    out.write(addressListJSONView.getHtml("JsonUser"));
+JsonNode testNode = AddressListModel.serializeAsJSON2(this.addressListModel);
+
+out.write(testNode.toString());
                     out.write("\n");
 
 //                sendResponse(socket, 405, "Method Not Allowed");

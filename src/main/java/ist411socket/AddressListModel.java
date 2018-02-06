@@ -6,6 +6,7 @@
 package ist411socket;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import java.io.File;
@@ -78,7 +79,7 @@ boolean validate;
             AddressListModel alm = new AddressListModel();
             alm.setAddressArrayList(this.addressArrayList);
             
-         fout.write(AddressListModel.serializeAsJSON(alm));
+         fout.write(AddressListModel.serializeAsJSON2(alm).toString());
             fout.close();
         } catch (IOException ex) {
             System.out.println("Unable To Create File");
@@ -157,29 +158,29 @@ boolean validate;
 
     }
 
-    static public String serializeAsJSON(AddressListModel alm) {
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String json = "";
-        try {
-            json = ow.writeValueAsString(alm);
-            System.out.println(json);
-
-            ObjectMapper objectMapper = new ObjectMapper();
-            StringWriter stringEmp = new StringWriter();
-            objectMapper.writeValue(stringEmp, alm);
-//            System.out.println("Stringemp\n" +stringEmp.toString());
-
-//            return json;
-        } catch (JsonProcessingException ex) {
-//            Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Unable to serilize as json");
-        } catch (IOException ex) {
-//                Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("IO exception during json serializeing");
-        }
-        System.out.println("Serialized JSON: " +json);
-        return json;
-    }
+//    static public String serializeAsJSON(AddressListModel alm) {
+//        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+//        String json = "";
+//        try {
+//            json = ow.writeValueAsString(alm);
+//            System.out.println(json);
+//
+//            ObjectMapper objectMapper = new ObjectMapper();
+//            StringWriter stringEmp = new StringWriter();
+//            objectMapper.writeValue(stringEmp, alm);
+////            System.out.println("Stringemp\n" +stringEmp.toString());
+//
+////            return json;
+//        } catch (JsonProcessingException ex) {
+////            Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println("Unable to serilize as json");
+//        } catch (IOException ex) {
+////                Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+//            System.out.println("IO exception during json serializeing");
+//        }
+//        System.out.println("Serialized JSON: " +json);
+//        return json;
+//    }
 
     static public AddressListModel deserializeAsJSON(String json) {
         AddressListModel tempModel = new AddressListModel();
@@ -203,5 +204,33 @@ boolean validate;
         System.out.println("alm size for json is " + tempModel.getAddressArrayList().size());
         return tempModel;
     }
+    
+    
+    static public JsonNode serializeAsJSON2(AddressListModel alm) {
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = "";
+        JsonNode tempNode = null;
+        try {
+            json = ow.writeValueAsString(alm);
+            System.out.println(json);
 
+            ObjectMapper objectMapper = new ObjectMapper();
+            StringWriter stringEmp = new StringWriter();
+            objectMapper.writeValue(stringEmp, alm);
+//            System.out.println("Stringemp\n" +stringEmp.toString());
+
+tempNode = objectMapper.valueToTree(alm);
+            System.out.println("temp node");
+            System.out.println(tempNode);
+//            return json;
+        } catch (JsonProcessingException ex) {
+//            Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Unable to serilize as json");
+        } catch (IOException ex) {
+//                Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("IO exception during json serializeing");
+        }
+        System.out.println("Serialized JSON: " +json);
+        return tempNode;
+    }
 }
