@@ -113,15 +113,13 @@ public class ClientHandler {
                     out.write(listView.getHtml("fileName.csv"));
                     out.write("\n");
 
-                } 
-                else if (path.equals("/list2")) {
+                } else if (path.equals("/list2")) {
 
-             
 //addressListModel.saveToFile("fileName");
                     System.out.println("Path received");
                     out.write("HTTP/1.1 200 OK\n\n");
 
-//                    addressListModel.saveJSONToFile("JsonUser");
+                    addressListModel.saveJSONToFile("JsonUser");
                     out.write(addressListTableView.getHtml("JsonUser"));
                     out.write("\n");
 
@@ -162,8 +160,8 @@ public class ClientHandler {
 
                     System.out.println("Path received");
                     out.write("HTTP/1.1 200 OK\n\n");
-out.write(addressListJSONView.getHtml("JsonUser"));
-                    
+                    out.write(addressListJSONView.getHtml("JsonUser"));
+
                     out.write("\n");
 
 //                sendResponse(socket, 405, "Method Not Allowed");
@@ -246,18 +244,32 @@ out.write(addressListJSONView.getHtml("JsonUser"));
 
                     if (checkFile(path) == true) {
                         out.write("HTTP/1.1 200 OK\n");
+                        
+                        if (path.endsWith(".png")){
                         out.write("Content-Type: image/png\n");
-
+                            System.out.println("ends with png");
+                        }else if (path.endsWith(".jpg")){
+                        out.write("Content-Type: image/jpg\n");
+                            System.out.println("ends with jpg");}
+                            
+                        
                         out.write("Content-Type: test/html\n");
-                        System.out.println("Content-Type: image/png\n\n");
+//                        System.out.println("Content-Type: image/png\n\n");
                         out.write("test");
 
                         File file = new File(path.replaceFirst("/", ""));
                         System.out.println("File Chekc inside else: " + path.replaceFirst("/", ""));
 
+//                        socket.getOutputStream().write("HTTP/1.1 200 OK\n".getBytes());
+//                        socket.getOutputStream().write("Content-Type: image/png\n".getBytes());
+
+//                        socket.getOutputStream().write("Content-Type: test/html\n".getBytes());
                         byte[] bytesFromFile = PublicView.getBytes(file);
                         socket.getOutputStream().write(bytesFromFile);
                         System.out.println(bytesFromFile.length);
+
+                        socket.getOutputStream().write("\n".getBytes());
+
                         out.write("\n");
                         System.out.println("TestTrue");
                         socket.getOutputStream().flush();
