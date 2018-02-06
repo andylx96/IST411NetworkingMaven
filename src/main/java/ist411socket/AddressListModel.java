@@ -100,7 +100,7 @@ boolean validate;
                 Scanner scan = new Scanner(fin);
                 while (scan.hasNext()) {
 
-                    tempLine += scan.next();
+                    tempLine += scan.nextLine();
 
 //                    alm.getAddressArrayList().add(AddressModel.deSerializeFromString(tempLine));
 
@@ -109,6 +109,7 @@ boolean validate;
                 }
                 
                 alm = AddressListModel.deserializeAsJSON(tempLine);
+                System.out.println("TESTTTTTT: "+ tempLine);
             } catch (FileNotFoundException ex) {
                 System.out.println("File Not Found for DB");
             }
@@ -168,7 +169,7 @@ boolean validate;
             objectMapper.writeValue(stringEmp, alm);
 //            System.out.println("Stringemp\n" +stringEmp.toString());
 
-            return json;
+//            return json;
         } catch (JsonProcessingException ex) {
 //            Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Unable to serilize as json");
@@ -176,7 +177,7 @@ boolean validate;
 //                Logger.getLogger(ClientHandler.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("IO exception during json serializeing");
         }
-
+        System.out.println("Serialized JSON: " +json);
         return json;
     }
 

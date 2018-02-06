@@ -32,9 +32,21 @@
     "state" : "Pennsylvania"
   }, {
     "validate" : true,
-    "name" : "Andy Lan99",
-    "street" : "1400 Martin",
+    "name" : "AndyLan99",
+    "street" : "1400Martin",
     "zip" : 16803,
     "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "Andy Lan",
+    "street" : "1400 Marti",
+    "zip" : 16803,
+    "state" : "Pennsylvania"
+  }, {
+    "validate" : true,
+    "name" : "IAmDewei",
+    "street" : "199 Knukles Ave",
+    "zip" : 16666,
+    "state" : "MA"
   } ]
 }

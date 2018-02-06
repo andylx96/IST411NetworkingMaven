@@ -43,7 +43,7 @@ public class AddressListTableView {
                 Scanner scan = new Scanner(fin);
                 while (scan.hasNext()) {
 
-                    tempLine += scan.next();
+                    tempLine += scan.nextLine();
 
 //                    alm.getAddressArrayList().add(AddressModel.deSerializeFromString(tempLine));
                 }
